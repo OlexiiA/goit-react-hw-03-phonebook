@@ -8,20 +8,22 @@ export class App extends React.Component {
 
   state = {
     contacts: [],
-    name: ''
+    name: '',
+    number:'',
   }
 
 
-addContact = text => {
-console.log(text)
-const contact = {
-  id: nanoid(),
-  name: text,
-}
-this.setState({
-  contacts: [contact, ...this.state.contacts]
-})
-console.log(contact)
+  addContact = text => {
+    console.log(text)
+    const contact = {
+      id: nanoid(),
+      name: text,
+      number: text,
+    }
+    this.setState(prevState => ({
+      contacts: [contact, ...prevState.contacts],
+    }))
+    
   }
   handleDeleteContact = nameId => {
     this.setState(prevState => ({
@@ -29,15 +31,18 @@ console.log(contact)
     }))
   }
 
-render(){
-  return(
-    <div>
-      <h1>Phonebook</h1>
-<Form onSubmit={this.addContact}/>
-<FormItem onDelete={this.handleDeleteContact}
-name={this.state.contacts}/>
-    </div>
-  )
-}
-  
+  render() {
+    return (
+      <div>
+        <h1>Phonebook</h1>
+        <Form onSubmit={this.addContact} />
+        <h2>Contacts</h2>
+        <FormItem
+          onDelete={this.handleDeleteContact}
+          name={this.state.contacts}
+           />
+      </div>
+    )
+  }
+
 };
