@@ -1,8 +1,8 @@
 import React from "react";
 
-export const FormItem = ({name, onDelete}) => (
+export const FormItem = ({contacts, onDelete}) => (
 <ul>
-    {name.map(({id, name, number}) => (
+    {contacts.map(({id, name, number}) => (
         <li key={id}>
             <p>{name}: {number}</p>
             <button type="button" onClick={() => onDelete(id)}>Delete</button>

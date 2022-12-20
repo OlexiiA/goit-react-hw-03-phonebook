@@ -39,7 +39,7 @@ export class App extends React.Component {
         <h2>Contacts</h2>
         <FormItem
           onDelete={this.handleDeleteContact}
-          name={this.state.contacts}
+          contacts={this.state.contacts}
            />
       </div>
     )
