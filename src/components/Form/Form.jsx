@@ -1,7 +1,12 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types';
 import { InputForm, Btn } from "./Form.styled";
 
 export class Form extends Component {
+
+    static propTypes = {
+        onSubmit: PropTypes.func.isRequired,
+    };
 
     state = {
         name: '',
@@ -25,7 +30,7 @@ export class Form extends Component {
         return (
             <InputForm onSubmit={this.handleSubmit}>
                 <label>
-                   <h3>Name</h3>
+                    <h3>Name</h3>
                     <input
                         value={this.state.name}
                         onChange={this.handleInput}
@@ -34,7 +39,7 @@ export class Form extends Component {
                         pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
                         title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
                         required
-                        style={{borderRadius: '10px', marginBottom: '5px'}}
+                        style={{ borderRadius: '10px', marginBottom: '5px' }}
                     />
                 </label>
                 <label>
@@ -47,7 +52,7 @@ export class Form extends Component {
                         pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
                         title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
                         required
-                        style={{borderRadius: '10px', marginBottom: '10px'}}
+                        style={{ borderRadius: '10px', marginBottom: '10px' }}
                     />
                 </label>
                 <Btn type="submit">Add contact</Btn>

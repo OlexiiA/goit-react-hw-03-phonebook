@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import { InputForm } from "./Filter.styled"
 
 export const Filter = ({ value, filterName }) => (
@@ -8,3 +9,8 @@ export const Filter = ({ value, filterName }) => (
         </label>
     </InputForm>
 )
+
+Filter.propTypes = {
+    value: PropTypes.string.isRequired,
+    filterName: PropTypes.func.isRequired,
+};
