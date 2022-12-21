@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { InputForm, Btn } from "./Form.styled";
 
 export class Form extends Component {
 
@@ -9,10 +10,10 @@ export class Form extends Component {
 
     handleInput = (e) => {
         this.setState({
-          [e.currentTarget.name]: e.currentTarget.value,
-          
+            [e.currentTarget.name]: e.currentTarget.value,
+
         });
-      };
+    };
 
     handleSubmit = e => {
         e.preventDefault();
@@ -22,9 +23,9 @@ export class Form extends Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
+            <InputForm onSubmit={this.handleSubmit}>
                 <label>
-                    Name
+                   <h3>Name</h3>
                     <input
                         value={this.state.name}
                         onChange={this.handleInput}
@@ -33,22 +34,24 @@ export class Form extends Component {
                         pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
                         title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
                         required
+                        style={{borderRadius: '10px', marginBottom: '5px'}}
                     />
                 </label>
                 <label>
-                    Number
+                    <h3>Number</h3>
                     <input
-                    value={this.state.number}
-                    onChange={this.handleInput}
+                        value={this.state.number}
+                        onChange={this.handleInput}
                         type="tel"
                         name="number"
                         pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
                         title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
                         required
+                        style={{borderRadius: '10px', marginBottom: '10px'}}
                     />
                 </label>
-                <button type="submit">Add contact</button>
-            </form>
+                <Btn type="submit">Add contact</Btn>
+            </InputForm>
         )
 
     }
