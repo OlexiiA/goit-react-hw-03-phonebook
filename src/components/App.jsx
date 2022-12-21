@@ -41,7 +41,6 @@ export class App extends React.Component {
 
   }
 
-
   filterByName = (e) => {
     this.setState({
       filter: e.currentTarget.value
@@ -52,6 +51,12 @@ export class App extends React.Component {
     const { contacts, filter } = this.state;
     const normalized = filter.toLowerCase();
     return contacts.filter(contact => contact.name.toLowerCase().includes(normalized));
+  };
+
+  handleDeleteContact = (id) => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(el => el.id !== id),
+    }));
   };
 
   render() {
