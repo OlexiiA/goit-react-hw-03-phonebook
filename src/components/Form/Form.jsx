@@ -22,7 +22,7 @@ export class Form extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        this.props.onSubmit(this.state.name)
+        this.props.onSubmit(this.state)
         this.setState({ name: '', number: '' })
     }
 

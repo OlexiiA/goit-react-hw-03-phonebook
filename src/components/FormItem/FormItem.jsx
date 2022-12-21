@@ -14,10 +14,10 @@ export const FormItem = ({ contacts, onDelete }) => (
 )
 
 FormItem.propTypes = {
+    onDelete: PropTypes.func.isRequired,
     contacts: PropTypes.arrayOf(PropTypes.exact({
         id: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
-        number: PropTypes.string.isRequired,
-        onDelete: PropTypes.func.isRequired
+        number: PropTypes.string.isRequired, 
     })),
 }
