@@ -20,7 +20,6 @@ export class App extends React.Component {
     filter: '',
   }
 
-
   addContact = ({ name, number }) => {
     const contact = {
       id: nanoid(),
@@ -58,6 +57,22 @@ export class App extends React.Component {
       contacts: prevState.contacts.filter(el => el.id !== id),
     }));
   };
+
+  componentDidMount() {
+    const getStorageContacts = localStorage.getItem('contacts')
+
+    if (getStorageContacts !== null) {
+      this.setState({
+        contacts: JSON.parse(getStorageContacts),
+      });
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.contacts !== this.state.contacts) {
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts))
+    }
+  }
 
   render() {
     const visibleContacts = this.visibleContacts();
